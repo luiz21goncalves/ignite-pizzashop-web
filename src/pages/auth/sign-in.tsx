@@ -1,9 +1,11 @@
+import { useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
+import { signIn } from '@/api/sign-in'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -15,25 +17,30 @@ const signInFormSchema = z.object({
 type SignInFormaData = z.infer<typeof signInFormSchema>
 
 export function SignIn() {
+  const { mutateAsync: authenticate } = useMutation({ mutationFn: signIn })
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<SignInFormaData>()
 
-  async function handleSignIn(data: SignInFormaData) {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      toast.success('Enviamos um link de autenticação para seu e-mail.', {
-        action: {
-          label: 'Reenviar',
-          onClick: () => handleSignIn(data),
+  async function handleSignIn({ email }: SignInFormaData) {
+    await authenticate(
+      { email },
+      {
+        onError: () => {
+          toast.error('Não foi possível enviar o e-mail de autenticação.')
         },
-      })
-    } catch (error) {
-      toast.error('Não foi possível enviar o e-mail de autenticação.')
-    }
+        onSuccess: () => {
+          toast.success('Enviamos um link de autenticação para seu e-mail.', {
+            action: {
+              label: 'Reenviar',
+              onClick: () => handleSignIn({ email }),
+            },
+          })
+        },
+      },
+    )
   }
 
   return (
