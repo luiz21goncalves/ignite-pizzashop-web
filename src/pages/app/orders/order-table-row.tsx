@@ -1,12 +1,26 @@
 import { ArrowRight, Search, X } from 'lucide-react'
 
+import { OrderStatusType } from '@/api/get-orders'
+import { OrderStatus } from '@/components/order-status'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { TableCell, TableRow } from '@/components/ui/table'
+import { formatRelativeDate } from '@/lib/date'
+import { formatCentsInMonetary } from '@/lib/monetary'
 
 import { OrderDetails } from './order-details'
 
-export function OrderTableRow() {
+type OrderTableRowProps = {
+  order: {
+    orderId: string
+    createdAt: string
+    status: OrderStatusType
+    totalInCents: number
+    customerName: string
+  }
+}
+
+export function OrderTableRow({ order }: OrderTableRowProps) {
   return (
     <TableRow>
       <TableCell>
@@ -22,17 +36,18 @@ export function OrderTableRow() {
         </Dialog>
       </TableCell>
       <TableCell className="font-xs font-mono font-medium">
-        vs89gq2e9bvhias
+        {order.orderId}
       </TableCell>
-      <TableCell className="text-muted-foreground">há 15 minutos</TableCell>
+      <TableCell className="text-muted-foreground">
+        {formatRelativeDate(order.createdAt)}
+      </TableCell>
       <TableCell>
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-slate-400" />
-          <span className="font-medium text-muted-foreground">Pendente</span>
-        </div>
+        <OrderStatus status={order.status} />
       </TableCell>
-      <TableCell className="font-medium">Luiz Gonçalves</TableCell>
-      <TableCell className="font-medium">R$ 140,99</TableCell>
+      <TableCell className="font-medium">{order.customerName}</TableCell>
+      <TableCell className="font-medium">
+        {formatCentsInMonetary(order.totalInCents)}
+      </TableCell>
       <TableCell>
         <Button variant="outline" size="xs">
           <ArrowRight className="mr-2 h-3 w-3" />
