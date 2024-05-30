@@ -23,10 +23,19 @@ export function Orders() {
     .number()
     .transform((page) => page - 1)
     .parse(searchParams.get('page') ?? '1')
+  const orderId = searchParams.get('orderId')
+  const customerName = searchParams.get('customerName')
+  const status = searchParams.get('status')
 
   const { data: ordersResponse } = useQuery({
-    queryFn: () => getOrders({ pageIndex }),
-    queryKey: ['orders', { pageIndex }],
+    queryFn: () =>
+      getOrders({
+        pageIndex,
+        orderId,
+        customerName,
+        status: status === 'all' ? null : status,
+      }),
+    queryKey: ['orders', { pageIndex, orderId, customerName, status }],
   })
 
   function handlePaginate(pageIndex: number) {
