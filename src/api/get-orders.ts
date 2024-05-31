@@ -7,7 +7,7 @@ export type OrderStatusType =
   | 'delivered'
   | 'canceled'
 
-type GetOrdersResponse = {
+export type GetOrdersResponse = {
   orders: Array<{
     orderId: string
     createdAt: string
