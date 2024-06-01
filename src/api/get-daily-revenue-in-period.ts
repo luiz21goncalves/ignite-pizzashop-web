@@ -1,10 +1,11 @@
 import { api } from '@/lib/axios'
 
-type GetDailyRevenueInPeriodResponse = Array<{
+export type GetDailyRevenueInPeriodResponse = Array<{
   date: string
   revenue: number
 }>
-type GetDailyRevenueInPeriodQuery = {
+
+export type GetDailyRevenueInPeriodQuery = {
   to?: Date
   from?: Date
 }

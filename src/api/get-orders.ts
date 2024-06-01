@@ -22,7 +22,7 @@ export type GetOrdersResponse = {
   }
 }
 
-type GetOrdersQuery = {
+export type GetOrdersQuery = {
   pageIndex?: number | null
   orderId?: string | null
   customerName?: string | null

@@ -1,6 +1,6 @@
 import { api } from '@/lib/axios'
 
-type GetMonthOrdersRevenueResponse = {
+export type GetMonthOrdersRevenueResponse = {
   revenue: number
   diffFromLastMonth: number
 }

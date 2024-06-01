@@ -2,11 +2,11 @@ import { api } from '@/lib/axios'
 
 import { OrderStatusType } from './get-orders'
 
-type GetOrderDetailsParams = {
+export type GetOrderDetailsParams = {
   orderId: string
 }
 
-type GetOrderDetailsResponse = {
+export type GetOrderDetailsResponse = {
   id: string
   status: OrderStatusType
   totalInCents: number
