@@ -1,6 +1,6 @@
 import { api } from '@/lib/axios'
 
-type SignInBody = {
+export type SignInBody = {
   email: string
 }
 
