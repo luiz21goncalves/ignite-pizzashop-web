@@ -25,6 +25,7 @@ export function OrderStatus({ status }: OrderStatusProps) {
       <span
         style={{ backgroundColor: color }}
         className={`h-2 w-2 rounded-full`}
+        data-testid="badge"
       />
       <span className="font-medium text-muted-foreground">{label}</span>
     </div>
