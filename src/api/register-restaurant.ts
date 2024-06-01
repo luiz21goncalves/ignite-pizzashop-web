@@ -1,6 +1,6 @@
 import { api } from '@/lib/axios'
 
-type RegistaurantBody = {
+export type RegistaurantBody = {
   restaurantName: string
   managerName: string
   email: string
