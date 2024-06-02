@@ -80,8 +80,7 @@ export function StoreProfileDialog() {
     },
     onError(_error, _variables, context) {
       if (context?.previousProfile) {
-        const { name, description } = context.previousProfile
-        updateManagedRestaurantCache({ description, name })
+        updateManagedRestaurantCache(context.previousProfile)
       }
     },
   })
