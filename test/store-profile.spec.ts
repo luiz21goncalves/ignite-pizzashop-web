@@ -35,7 +35,6 @@ test('update profile with error', async ({ page }) => {
   await expect(toast).toBeVisible()
 
   await page.getByRole('button', { name: 'Close' }).click()
-  await page.waitForTimeout(250)
 
   await expect(page.getByRole('button', { name: 'Pizza Shop' })).toBeVisible()
 })
