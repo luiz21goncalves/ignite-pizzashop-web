@@ -21,10 +21,11 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    // TODO: playwright doesn't have support fot Ubuntu 24.04
     // {
     //   name: 'webkit',
     //   use: { ...devices['Desktop Safari'] },
