@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -31,7 +32,11 @@ const storeProfileSchema = z.object({
 type StoreProfileSchema = z.infer<typeof storeProfileSchema>
 
 export function StoreProfileDialog() {
+  const [t] = useTranslation('translations', {
+    keyPrefix: 'storeProfileDialog',
+  })
   const queryClient = useQueryClient()
+
   const { data: managedRestaurant } = useQuery({
     queryFn: getManagedRestaurant,
     queryKey: ['managed-restaurant'],
@@ -93,10 +98,10 @@ export function StoreProfileDialog() {
       { name, description },
       {
         onSuccess() {
-          toast.success('Perfil atualizado com sucesso!')
+          toast.success(t('feedback.toast.success'))
         },
         onError() {
-          toast.error('Falha ao atalizar perfil, tente novamente!')
+          toast.error(t('feedback.toast.success'))
         },
       },
     )
@@ -105,22 +110,22 @@ export function StoreProfileDialog() {
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Perfil da loja</DialogTitle>
-        <DialogDescription>
-          Atualize as informações do seu estabelecimento visíveis ao seu cliente
-        </DialogDescription>
+        <DialogTitle>{t('dialog.title')}</DialogTitle>
+        <DialogDescription>{t('dialog.description')}</DialogDescription>
       </DialogHeader>
+
       <form onSubmit={handleSubmit(handleUpdateProfile)}>
         <div className="space-y-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right" htmlFor="name">
-              Nome
+              {t('form.inputs.name')}
             </Label>
             <Input className="col-span-3" id="name" {...register('name')} />
           </div>
+
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right" htmlFor="description">
-              Descrição
+              {t('form.inputs.description')}
             </Label>
             <Textarea
               className="col-span-3"
@@ -129,14 +134,16 @@ export function StoreProfileDialog() {
             />
           </div>
         </div>
+
         <DialogFooter>
           <DialogClose asChild>
             <Button type="button" variant="ghost">
-              Cancelar
+              {t('form.buttons.cancel')}
             </Button>
           </DialogClose>
+
           <Button type="submit" variant="success" disabled={isSubmitting}>
-            Salvar
+            {t('form.buttons.confirm')}
           </Button>
         </DialogFooter>
       </form>
