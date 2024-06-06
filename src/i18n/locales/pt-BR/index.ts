@@ -1,3 +1,10 @@
 export const ptBr = {
-  translations: {},
-} as const
+  translations: {
+    header: {
+      navigation: {
+        '/': 'Home',
+        '/orders': 'Pedidos',
+      },
+    },
+  },
+}
