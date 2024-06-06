@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { Building, ChevronDown, LogOut } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import { getManagedRestaurant } from '@/api/get-managed-restaurant'
@@ -20,7 +21,9 @@ import {
 import { Skeleton } from './ui/skeleton'
 
 export function AccountMenu() {
+  const [t] = useTranslation()
   const navigate = useNavigate()
+
   const { data: profile, isLoading: isLoadingProfile } = useQuery({
     queryFn: getProfile,
     queryKey: ['profile'],
@@ -55,6 +58,7 @@ export function AccountMenu() {
             <ChevronDown className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
+
         <DropdownMenuContent className="w-56" align="end">
           <DropdownMenuLabel className="flex flex-col">
             {isLoadingProfile ? (
@@ -71,13 +75,16 @@ export function AccountMenu() {
               </>
             )}
           </DropdownMenuLabel>
+
           <DropdownMenuSeparator />
+
           <DialogTrigger asChild>
             <DropdownMenuItem>
               <Building className="mr-2 h-4 w-4" />
-              <span>Perfil da loja</span>
+              <span>{t('accountMenu.buttons.profile')}</span>
             </DropdownMenuItem>
           </DialogTrigger>
+
           <DropdownMenuItem
             asChild
             className="text-rose-500 dark:text-rose-400"
@@ -85,7 +92,7 @@ export function AccountMenu() {
           >
             <button className="w-full" onClick={() => signOutFn()}>
               <LogOut className="mr-2 h-4 w-4" />
-              <span>Sair</span>
+              <span>{t('accountMenu.buttons.logout')}</span>
             </button>
           </DropdownMenuItem>
         </DropdownMenuContent>

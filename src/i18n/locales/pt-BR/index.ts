@@ -6,5 +6,11 @@ export const ptBr = {
         '/orders': 'Pedidos',
       },
     },
+    accountMenu: {
+      buttons: {
+        profile: 'Perfil da loja',
+        logout: 'Sair',
+      },
+    },
   },
 }

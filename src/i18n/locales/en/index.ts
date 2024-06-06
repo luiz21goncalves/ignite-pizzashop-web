@@ -8,5 +8,11 @@ export const en = {
         '/orders': 'Orders',
       },
     },
+    accountMenu: {
+      buttons: {
+        logout: 'Logout',
+        profile: 'Store profile',
+      },
+    },
   },
 } satisfies CustomTypeOptions['resources']
