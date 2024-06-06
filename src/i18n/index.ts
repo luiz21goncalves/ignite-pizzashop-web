@@ -3,6 +3,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
 import { ptBr } from '../i18n/locales/pt-BR'
+import { en } from './locales/en'
 
 i18n
   .use(LanguageDetector)
@@ -12,6 +13,7 @@ i18n
     ns: ['translations'],
     resources: {
       'pt-BR': ptBr,
+      en,
     },
     fallbackLng: 'pt-BR',
   })
