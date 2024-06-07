@@ -37,6 +37,12 @@ export const en = {
           "Update your establishment's information to be visible to your customer",
       },
     },
+    'theme-toggle': {
+      light: 'Light',
+      dark: 'Dark',
+      system: 'System',
+      sr: 'Toggle theme',
+    },
     layouts: {
       auth: {
         footer: 'Partner Dashboard © pizza.shop {{year}}',

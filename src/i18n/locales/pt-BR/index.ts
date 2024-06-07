@@ -35,6 +35,12 @@ export const ptBr = {
         },
       },
     },
+    'theme-toggle': {
+      light: 'Claro',
+      dark: 'Escuro',
+      system: 'Sistema',
+      sr: 'Alterar tema',
+    },
     layouts: {
       auth: {
         footer: 'Painel do parceiro © pizza.shop {{year}}',
