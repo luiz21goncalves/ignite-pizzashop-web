@@ -2,7 +2,7 @@ export const ptBr = {
   translations: {
     header: {
       navigation: {
-        '/': 'Home',
+        '/': 'Início',
         '/orders': 'Pedidos',
       },
     },

@@ -4,7 +4,7 @@ export const en = {
   translations: {
     header: {
       navigation: {
-        '/': 'Dashboard',
+        '/': 'Home',
         '/orders': 'Orders',
       },
     },
