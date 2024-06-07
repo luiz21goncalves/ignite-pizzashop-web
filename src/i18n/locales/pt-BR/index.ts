@@ -35,5 +35,10 @@ export const ptBr = {
         },
       },
     },
+    layouts: {
+      auth: {
+        footer: 'Painel do parceiro © pizza.shop {{year}}',
+      },
+    },
   },
 }

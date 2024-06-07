@@ -37,5 +37,10 @@ export const en = {
           "Update your establishment's information to be visible to your customer",
       },
     },
+    layouts: {
+      auth: {
+        footer: 'Partner Dashboard © pizza.shop {{year}}',
+      },
+    },
   },
 } satisfies CustomTypeOptions['resources']

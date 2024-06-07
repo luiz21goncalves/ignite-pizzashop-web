@@ -1,9 +1,12 @@
 import { Pizza } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Outlet } from 'react-router-dom'
 
 const YEAR = new Date().getFullYear()
 
 export function AuthLayout() {
+  const [t] = useTranslation('translations', { keyPrefix: 'layouts.auth' })
+
   return (
     <div className="grid min-h-screen grid-cols-2 antialiased">
       <div className="flex h-full flex-col justify-between border-r border-foreground/5 bg-muted p-10 text-muted-foreground">
@@ -12,9 +15,7 @@ export function AuthLayout() {
           <span className="font-semibold">pizza.shop</span>
         </div>
 
-        <footer className="text-sm">
-          Painel do parceiro &copy; pizza.shop {YEAR}
-        </footer>
+        <footer className="text-sm">{t('footer', { year: YEAR })}</footer>
       </div>
 
       <div className="relative flex flex-col items-center justify-center">
