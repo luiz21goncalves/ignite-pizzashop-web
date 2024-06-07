@@ -42,5 +42,22 @@ export const en = {
         footer: 'Partner Dashboard © pizza.shop {{year}}',
       },
     },
+    pages: {
+      'sign-in': {
+        heading: 'Access dashboard',
+        description: 'Track your sales through the partner panel!',
+        form: {
+          input: 'Your email',
+          button: 'Access dashboard',
+        },
+        'sign-up-link': 'New establishment',
+        feedback: {
+          toast: {
+            error: 'Unable to send authentication email.',
+            success: 'We send an authentication link to your email.',
+          },
+        },
+      },
+    },
   },
 } satisfies CustomTypeOptions['resources']

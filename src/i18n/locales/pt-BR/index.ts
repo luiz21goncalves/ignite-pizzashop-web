@@ -40,5 +40,22 @@ export const ptBr = {
         footer: 'Painel do parceiro © pizza.shop {{year}}',
       },
     },
+    pages: {
+      'sign-in': {
+        heading: 'Acessar painel',
+        description: 'Acompanhe suas vendas pelo painel do parceiro!',
+        form: {
+          input: 'Seu e-mail',
+          button: 'Acessar painel',
+        },
+        'sign-up-link': 'Novo estabelecimento',
+        feedback: {
+          toast: {
+            error: 'Não foi possível enviar o e-mail de autenticação.',
+            success: 'Enviamos um link de autenticação para seu e-mail.',
+          },
+        },
+      },
+    },
   },
 }
