@@ -64,6 +64,40 @@ export const en = {
           },
         },
       },
+      dashboard: {
+        heading: 'Dashboard',
+        components: {
+          cards: {
+            'day-orders-amount': {
+              title: 'Orders (day)',
+              label: 'compared to the previous day',
+            },
+            'month-canceled-orders-amount': {
+              title: 'Cancellations (month)',
+              label: 'compared to the previous month',
+            },
+            'month-orders-amount': {
+              title: 'Orders (month)',
+              label: 'compared to the previous month',
+            },
+            'month-revenue': {
+              title: 'Total revenue (month)',
+              label: 'compared to the previous month',
+            },
+          },
+          charts: {
+            'pupular-products': {
+              title: 'Popular products',
+            },
+            revenue: {
+              dateFormat: 'MM/dd',
+              title: 'Revenue in the period',
+              label: 'Period',
+              description: 'Daily revenue in the period',
+            },
+          },
+        },
+      },
     },
   },
 } satisfies CustomTypeOptions['resources']

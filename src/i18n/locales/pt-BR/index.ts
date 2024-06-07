@@ -62,6 +62,40 @@ export const ptBr = {
           },
         },
       },
+      dashboard: {
+        heading: 'Painel',
+        components: {
+          cards: {
+            'day-orders-amount': {
+              title: 'Pedidos (dia)',
+              label: 'em relação ao dia anterior',
+            },
+            'month-canceled-orders-amount': {
+              title: 'Cancelamentos (mês)',
+              label: 'em relação ao mês anterior',
+            },
+            'month-orders-amount': {
+              title: 'Pedidos (mês)',
+              label: 'em relação ao mês anterior',
+            },
+            'month-revenue': {
+              title: 'Receita total (mês)',
+              label: 'em relação ao mês anterior',
+            },
+          },
+          charts: {
+            'pupular-products': {
+              title: 'Produtos populares',
+            },
+            revenue: {
+              title: 'Receita no período',
+              description: 'Receita diária no período',
+              label: 'Período',
+              dateFormat: 'dd/MM',
+            },
+          },
+        },
+      },
     },
   },
 }

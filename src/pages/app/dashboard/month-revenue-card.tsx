@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { DollarSign } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 import { getMonthOrdersRevenue } from '@/api/get-month-orders-revenue'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -8,6 +9,9 @@ import { formatCentsInMonetary } from '@/lib/monetary'
 import { MetricCardSkeleton } from './metric-card-skeleton'
 
 export function MonthRevenueCard() {
+  const [t] = useTranslation('translations', {
+    keyPrefix: 'pages.dashboard.components.cards.month-revenue',
+  })
   const { data: monthRevenue } = useQuery({
     queryFn: getMonthOrdersRevenue,
     queryKey: ['metrics', 'month-revenue'],
@@ -16,9 +20,7 @@ export function MonthRevenueCard() {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-base font-semibold">
-          Receita total (mês)
-        </CardTitle>
+        <CardTitle className="text-base font-semibold">{t('title')}</CardTitle>
         <DollarSign className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent className="space-y-1">
@@ -37,7 +39,7 @@ export function MonthRevenueCard() {
                   {monthRevenue.diffFromLastMonth}%
                 </span>
               )}{' '}
-              em relação ao mês passado
+              {t('label')}
             </p>
           </>
         ) : (

@@ -3,6 +3,7 @@ import { ptBR } from 'date-fns/locale'
 import { Calendar as CalendarIcon } from 'lucide-react'
 import * as React from 'react'
 import { DateRange } from 'react-day-picker'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
@@ -23,6 +24,10 @@ export function DateRangePicker({
   date,
   onDateChange,
 }: DateRangePickerProps) {
+  const [, i18n] = useTranslation()
+
+  const locale = i18n.language === 'pt-BR' ? ptBR : undefined
+
   return (
     <div className={cn('grid gap-2', className)}>
       <Popover>
@@ -39,11 +44,11 @@ export function DateRangePicker({
             {date?.from ? (
               date.to ? (
                 <>
-                  {format(date.from, 'LLL dd, y', { locale: ptBR })} -{' '}
-                  {format(date.to, 'LLL dd, y', { locale: ptBR })}
+                  {format(date.from, 'LLL dd, y', { locale })} -{' '}
+                  {format(date.to, 'LLL dd, y', { locale })}
                 </>
               ) : (
-                format(date.from, 'LLL dd, y', { locale: ptBR })
+                format(date.from, 'LLL dd, y', { locale })
               )
             ) : (
               <span>Selecione uma data</span>
@@ -58,6 +63,7 @@ export function DateRangePicker({
             selected={date}
             onSelect={onDateChange}
             numberOfMonths={1}
+            locale={locale}
           />
         </PopoverContent>
       </Popover>

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { BarChart, Loader2 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
 import colors from 'tailwindcss/colors'
 
@@ -15,6 +16,9 @@ const COLORS = [
 ]
 
 export function PopularProductsChart() {
+  const [t] = useTranslation('translations', {
+    keyPrefix: 'pages.dashboard.components.charts',
+  })
   const { data: popularProducts } = useQuery({
     queryFn: getPopularProducts,
     queryKey: ['metrics', 'popular-products'],
@@ -25,11 +29,12 @@ export function PopularProductsChart() {
       <CardHeader className="pb-8">
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-medium">
-            Produtos populares
+            {t('pupular-products.title')}
           </CardTitle>
           <BarChart className="h-4 w-4 text-muted-foreground" />
         </div>
       </CardHeader>
+
       <CardContent>
         {popularProducts ? (
           <ResponsiveContainer width="100%" height={240}>
