@@ -1,6 +1,9 @@
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { I18nextProvider } from 'react-i18next'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+
+import i18n from '@/i18n'
 
 import { Pagination } from './pagination'
 
@@ -19,6 +22,11 @@ describe('Pagination', () => {
         perPage={10}
         onPageChange={mockedOnPageChange}
       />,
+      {
+        wrapper({ children }) {
+          return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+        },
+      },
     )
 
     expect(wrapper.getByText('Página 1 de 20')).toBeInTheDocument()
@@ -33,6 +41,11 @@ describe('Pagination', () => {
         perPage={10}
         onPageChange={mockedOnPageChange}
       />,
+      {
+        wrapper({ children }) {
+          return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+        },
+      },
     )
 
     const user = userEvent.setup()
@@ -54,6 +67,11 @@ describe('Pagination', () => {
         perPage={10}
         onPageChange={mockedOnPageChange}
       />,
+      {
+        wrapper({ children }) {
+          return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+        },
+      },
     )
 
     const user = userEvent.setup()
@@ -75,6 +93,11 @@ describe('Pagination', () => {
         perPage={10}
         onPageChange={mockedOnPageChange}
       />,
+      {
+        wrapper({ children }) {
+          return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+        },
+      },
     )
 
     const user = userEvent.setup()
@@ -96,6 +119,11 @@ describe('Pagination', () => {
         perPage={10}
         onPageChange={mockedOnPageChange}
       />,
+      {
+        wrapper({ children }) {
+          return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+        },
+      },
     )
 
     const user = userEvent.setup()

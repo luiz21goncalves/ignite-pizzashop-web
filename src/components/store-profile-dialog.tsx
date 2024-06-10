@@ -101,7 +101,7 @@ export function StoreProfileDialog() {
           toast.success(t('feedback.toast.success'))
         },
         onError() {
-          toast.error(t('feedback.toast.success'))
+          toast.error(t('feedback.toast.error'))
         },
       },
     )
