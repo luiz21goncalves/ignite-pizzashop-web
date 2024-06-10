@@ -4,6 +4,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from './ui/button'
 
@@ -20,6 +21,8 @@ export function Pagination({
   totalCount,
   onPageChange,
 }: PaginationProps) {
+  const [t] = useTranslation('translations', { keyPrefix: 'pagination' })
+
   const pages = Math.ceil(totalCount / perPage) || 1
 
   const hasNextPage = pageIndex === 0
@@ -28,12 +31,14 @@ export function Pagination({
   return (
     <div className="flex items-center justify-between">
       <span className="text-sm text-muted-foreground">
-        Total de {totalCount} item(s)
+        {t('totalLabel', { totalCount })}
       </span>
+
       <div className="flex items-center gap-6 lg:gap-8">
         <div className="text-sm font-medium">
-          Página {pageIndex + 1} de {pages}
+          {t('pageLabel', { page: pageIndex + 1, totalPages: pages })}
         </div>
+
         <div className="flex items-center gap-2">
           <Button
             onClick={() => onPageChange(0)}
@@ -42,8 +47,9 @@ export function Pagination({
             disabled={hasNextPage}
           >
             <ChevronsLeft className="h-4 w-4" />
-            <span className="sr-only">Primeira página</span>
+            <span className="sr-only">{t('buttons.first')}</span>
           </Button>
+
           <Button
             onClick={() => onPageChange(pageIndex - 1)}
             className="h-8 w-8 p-0"
@@ -51,8 +57,9 @@ export function Pagination({
             disabled={hasNextPage}
           >
             <ChevronLeft className="h-4 w-4" />
-            <span className="sr-only">Página anterior</span>
+            <span className="sr-only">{t('buttons.previous')}</span>
           </Button>
+
           <Button
             onClick={() => onPageChange(pageIndex + 1)}
             className="h-8 w-8 p-0"
@@ -60,8 +67,9 @@ export function Pagination({
             disabled={hasPreviousPage}
           >
             <ChevronRight className="h-4 w-4" />
-            <span className="sr-only">Próxima página</span>
+            <span className="sr-only">{t('buttons.next')}</span>
           </Button>
+
           <Button
             onClick={() => onPageChange(pages - 1)}
             className="h-8 w-8 p-0"
@@ -69,7 +77,7 @@ export function Pagination({
             disabled={hasPreviousPage}
           >
             <ChevronsRight className="h-4 w-4" />
-            <span className="sr-only">Última página</span>
+            <span className="sr-only">{t('buttons.last')}</span>
           </Button>
         </div>
       </div>

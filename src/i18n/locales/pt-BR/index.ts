@@ -41,6 +41,16 @@ export const ptBr = {
       system: 'Sistema',
       sr: 'Alterar tema',
     },
+    pagination: {
+      totalLabel: 'Total de {{totalCount}} item(s)',
+      pageLabel: 'Página {{page}} de {{totalPages}}',
+      buttons: {
+        first: 'Primeira página',
+        previous: 'Página anterior',
+        next: 'Próxima página',
+        last: 'Última página',
+      },
+    },
     layouts: {
       auth: {
         footer: 'Painel do parceiro © pizza.shop {{year}}',
