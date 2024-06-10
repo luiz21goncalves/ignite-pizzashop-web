@@ -11,6 +11,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
+    "test:e2e": "playwright test",
     "test:watch": "vitest watch"
   },
   "dependencies": {
