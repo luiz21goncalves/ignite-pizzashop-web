@@ -142,6 +142,36 @@ export const ptBr = {
               },
             },
           },
+          details: {
+            title: 'Pedido: {{orderId}}',
+            description: 'Detalhes do pedido',
+            order: {
+              table: {
+                rows: {
+                  '0': 'Status',
+                  '1': 'Cliente',
+                  '2': 'Telefone',
+                  '3': 'E-mail',
+                  '4': 'Realizado há',
+                },
+              },
+            },
+            product: {
+              table: {
+                header: {
+                  rows: {
+                    '0': 'Produto',
+                    '1': 'Qtd.',
+                    '2': 'Preço',
+                    '3': 'Subtotal',
+                  },
+                },
+                footer: {
+                  '0': 'Total do pedido',
+                },
+              },
+            },
+          },
         },
       },
     },

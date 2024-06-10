@@ -144,6 +144,36 @@ export const en = {
               confirm: 'Filter results',
             },
           },
+          details: {
+            title: 'Order: {{orderId}}',
+            description: 'Order details',
+            order: {
+              table: {
+                rows: {
+                  '0': 'Status',
+                  '1': 'Customer',
+                  '2': 'Phone',
+                  '3': 'Email',
+                  '4': 'Performed at',
+                },
+              },
+            },
+            product: {
+              table: {
+                header: {
+                  rows: {
+                    '0': 'Product',
+                    '1': 'Amt.',
+                    '2': 'Price',
+                    '3': 'Subtotal',
+                  },
+                },
+                footer: {
+                  '0': 'Order amount',
+                },
+              },
+            },
+          },
         },
       },
     },
