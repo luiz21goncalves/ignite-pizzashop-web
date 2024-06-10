@@ -96,6 +96,54 @@ export const ptBr = {
           },
         },
       },
+      orders: {
+        heading: 'Pedidos',
+        components: {
+          table: {
+            header: {
+              rows: {
+                '2': 'Identificador',
+                '3': 'Realizado há',
+                '4': 'Status',
+                '5': 'Cliente',
+                '6': 'Total do pedido',
+              },
+            },
+            body: {
+              rows: {
+                '1': 'Detalhes do pedido',
+                '7': {
+                  pending: 'Aprovar',
+                  processing: 'Em entrega',
+                  delivering: 'Entregue',
+                },
+                '8': 'Cancelar',
+              },
+            },
+          },
+          filter: {
+            label: 'Filtros',
+            buttons: {
+              confirm: 'Filtrar resultados',
+              cancel: 'Remover filtros',
+            },
+            inputs: {
+              id: 'ID do pedido',
+              name: 'Nome do cliente',
+              status: {
+                options: {
+                  all: 'Todos status',
+                  pending: 'Pendente',
+                  canceled: 'Cancelado',
+                  processing: 'Em preparo',
+                  delivering: 'Em entrega',
+                  delivered: 'Entregue',
+                },
+              },
+            },
+          },
+        },
+      },
     },
   },
 }

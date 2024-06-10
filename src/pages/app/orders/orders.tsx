@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
+import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
@@ -18,6 +19,7 @@ import { OrderTableRow } from './order-table-row'
 import { OrderTableSkelton } from './order-table-skeleton'
 
 export function Orders() {
+  const [t] = useTranslation('translations', { keyPrefix: 'pages.orders' })
   const [searchParams, setSearchParams] = useSearchParams()
 
   const pageIndex = z.coerce
@@ -52,24 +54,34 @@ export function Orders() {
     <>
       <Helmet title="Pedidos" />
       <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Pedidos</h1>
+        <h1 className="text-3xl font-bold tracking-tight">{t('heading')}</h1>
 
         <div className="space-y-2.5">
           <OrderTableFilters />
+
           <div className="rounded-md border">
             <Table>
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[64px]" />
-                  <TableHead className="w-[140px]">Identificador</TableHead>
-                  <TableHead className="w-[180px]">Realizado há</TableHead>
-                  <TableHead className="w-[140px]">Status</TableHead>
-                  <TableHead>Cliente</TableHead>
-                  <TableHead className="w-[140px]">Total do pedido</TableHead>
+                  <TableHead className="w-[140px]">
+                    {t('components.table.header.rows.2')}
+                  </TableHead>
+                  <TableHead className="w-[180px]">
+                    {t('components.table.header.rows.3')}
+                  </TableHead>
+                  <TableHead className="w-[140px]">
+                    {t('components.table.header.rows.4')}
+                  </TableHead>
+                  <TableHead>{t('components.table.header.rows.5')}</TableHead>
+                  <TableHead className="w-[140px]">
+                    {t('components.table.header.rows.6')}
+                  </TableHead>
                   <TableHead className="w-[164px]" />
                   <TableHead className="w-[132px]" />
                 </TableRow>
               </TableHeader>
+
               <TableBody>
                 {isLoadingOrders && <OrderTableSkelton />}
                 {ordersResponse?.orders.map((order) => {
@@ -78,6 +90,7 @@ export function Orders() {
               </TableBody>
             </Table>
           </div>
+
           {ordersResponse && (
             <Pagination
               pageIndex={pageIndex}

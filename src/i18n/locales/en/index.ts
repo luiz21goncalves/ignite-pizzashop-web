@@ -98,6 +98,54 @@ export const en = {
           },
         },
       },
+      orders: {
+        heading: 'Orders',
+        components: {
+          table: {
+            header: {
+              rows: {
+                '2': 'Identifier',
+                '3': 'Performed at',
+                '4': 'Status',
+                '5': 'Customer',
+                '6': 'Order amount',
+              },
+            },
+            body: {
+              rows: {
+                '1': 'Order details',
+                '7': {
+                  pending: 'Approve',
+                  processing: 'Delivering',
+                  delivering: 'Delivered',
+                },
+                '8': 'Cancel',
+              },
+            },
+          },
+          filter: {
+            label: 'Filters',
+            inputs: {
+              id: 'Order ID',
+              name: 'Customer name',
+              status: {
+                options: {
+                  all: 'All status',
+                  pending: 'Pending',
+                  canceled: 'Canceled',
+                  processing: 'Processing',
+                  delivering: 'Delivering',
+                  delivered: 'Delivered',
+                },
+              },
+            },
+            buttons: {
+              cancel: 'Remove filters',
+              confirm: 'Filter results',
+            },
+          },
+        },
+      },
     },
   },
 } satisfies CustomTypeOptions['resources']

@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Search, X } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
@@ -23,6 +24,9 @@ const orderFiltersSchema = z.object({
 type OrderFilterData = z.infer<typeof orderFiltersSchema>
 
 export function OrderTableFilters() {
+  const [t] = useTranslation('translations', {
+    keyPrefix: 'pages.orders.components.filter',
+  })
   const [searchParams, setSearchParams] = useSearchParams()
 
   const orderId = searchParams.get('orderId')
@@ -77,17 +81,20 @@ export function OrderTableFilters() {
       onSubmit={handleSubmit(handleFilter)}
       onReset={handleClearFilters}
     >
-      <span className="text-sm font-semibold">Filtros</span>
+      <span className="text-sm font-semibold">{t('label')}</span>
+
       <Input
-        placeholder="ID do pedido"
+        placeholder={t('inputs.id')}
         className="h-8 w-auto"
         {...register('orderId')}
       />
+
       <Input
-        placeholder="Nome do cliente"
+        placeholder={t('inputs.name')}
         className="h-8 w-[320px]"
         {...register('customerName')}
       />
+
       <Controller
         name="status"
         control={control}
@@ -104,24 +111,38 @@ export function OrderTableFilters() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">Todos status</SelectItem>
-                <SelectItem value="pending">Pendente</SelectItem>
-                <SelectItem value="canceled">Cancelado</SelectItem>
-                <SelectItem value="processing">Em preparo</SelectItem>
-                <SelectItem value="delivering">Em entrega</SelectItem>
-                <SelectItem value="delivered">Entregue</SelectItem>
+                <SelectItem value="all">
+                  {t('inputs.status.options.all')}
+                </SelectItem>
+                <SelectItem value="pending">
+                  {t('inputs.status.options.pending')}
+                </SelectItem>
+                <SelectItem value="canceled">
+                  {t('inputs.status.options.canceled')}
+                </SelectItem>
+                <SelectItem value="processing">
+                  {t('inputs.status.options.processing')}
+                </SelectItem>
+                <SelectItem value="delivering">
+                  {t('inputs.status.options.delivering')}
+                </SelectItem>
+                <SelectItem value="delivered">
+                  {t('inputs.status.options.delivered')}
+                </SelectItem>
               </SelectContent>
             </Select>
           )
         }}
       />
+
       <Button type="submit" variant="secondary" size="xs">
         <Search className="mr-2 h-4 w-4" />
-        Filtrar resultados
+        {t('buttons.confirm')}
       </Button>
+
       <Button type="reset" variant="outline" size="xs">
         <X className="mr-2 h-4 w-4" />
-        Remover filtros
+        {t('buttons.cancel')}
       </Button>
     </form>
   )

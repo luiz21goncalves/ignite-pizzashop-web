@@ -51,12 +51,14 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                   <OrderStatus status={order.status} />
                 </TableCell>
               </TableRow>
+
               <TableRow>
                 <TableCell className="text-muted-foreground">Cliente</TableCell>
                 <TableCell className="flex justify-end">
                   {order.customer.name}
                 </TableCell>
               </TableRow>
+
               <TableRow>
                 <TableCell className="text-muted-foreground">
                   Telefone
@@ -65,12 +67,14 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                   {order.customer.phone ?? 'Não informado'}
                 </TableCell>
               </TableRow>
+
               <TableRow>
                 <TableCell className="text-muted-foreground">E-mail</TableCell>
                 <TableCell className="flex justify-end">
                   {order.customer.email}
                 </TableCell>
               </TableRow>
+
               <TableRow>
                 <TableCell className="text-muted-foreground">
                   Realizado há
@@ -91,6 +95,7 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                 <TableHead className="text-right">Subtotal</TableHead>
               </TableRow>
             </TableHeader>
+
             <TableBody>
               {order.orderItems.map((orderItem) => {
                 return (
@@ -111,6 +116,7 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                 )
               })}
             </TableBody>
+
             <TableFooter>
               <TableRow>
                 <TableCell colSpan={3}>Total do pedido</TableCell>

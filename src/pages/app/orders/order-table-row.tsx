@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { ArrowRight, Search, X } from 'lucide-react'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { approveOrder } from '@/api/approve-order'
 import { cancelOrder } from '@/api/cancel-order'
@@ -27,6 +28,9 @@ type OrderTableRowProps = {
 }
 
 export function OrderTableRow({ order }: OrderTableRowProps) {
+  const [t] = useTranslation('translations', {
+    keyPrefix: 'pages.orders.components.table.body',
+  })
   const [isDetailsOpen, setDetailsOpen] = useState(false)
   const queryClient = useQueryClient()
 
@@ -93,26 +97,32 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
           <DialogTrigger asChild>
             <Button variant="outline" size="xs">
               <Search className="h-3 w-3" />
-              <span className="sr-only">Detalhes do pedido</span>
+              <span className="sr-only">{t('rows.1')}</span>
             </Button>
           </DialogTrigger>
 
           <OrderDetails orderId={order.orderId} open={isDetailsOpen} />
         </Dialog>
       </TableCell>
+
       <TableCell className="font-xs font-mono font-medium">
         {order.orderId}
       </TableCell>
+
       <TableCell className="text-muted-foreground">
         {formatRelativeDate(order.createdAt)}
       </TableCell>
+
       <TableCell>
         <OrderStatus status={order.status} />
       </TableCell>
+
       <TableCell className="font-medium">{order.customerName}</TableCell>
+
       <TableCell className="font-medium">
         {formatCentsInMonetary(order.totalInCents)}
       </TableCell>
+
       <TableCell>
         {order.status === 'pending' && (
           <Button
@@ -122,7 +132,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             size="xs"
           >
             <ArrowRight className="mr-2 h-3 w-3" />
-            Aprovar
+            {t('rows.7.pending')}
           </Button>
         )}
 
@@ -134,7 +144,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             size="xs"
           >
             <ArrowRight className="mr-2 h-3 w-3" />
-            Em entrega
+            {t('rows.7.processing')}
           </Button>
         )}
 
@@ -146,10 +156,11 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             size="xs"
           >
             <ArrowRight className="mr-2 h-3 w-3" />
-            Entregue
+            {t('rows.7.delivering')}
           </Button>
         )}
       </TableCell>
+
       <TableCell>
         <Button
           disabled={
@@ -161,7 +172,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
           onClick={() => cancelOrderFn({ orderId: order.orderId })}
         >
           <X className="mr-2 h-3 w-3" />
-          Cancelar
+          {t('rows.8')}
         </Button>
       </TableCell>
     </TableRow>
